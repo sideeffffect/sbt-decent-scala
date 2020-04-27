@@ -1,12 +1,11 @@
 package com.github.sideeffffect.sbtdecentscala
 
+import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import sbt.Keys._
 import sbt._
 import scalafix.sbt.ScalafixPlugin
 import scalafix.sbt.ScalafixPlugin.autoImport._
-
-import _root_.io.github.davidgregory084.TpolecatPlugin
 
 object DecentScalaPlugin extends AutoPlugin {
 
