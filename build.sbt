@@ -1,8 +1,8 @@
 Global / onChangedBuildSource := ReloadOnSourceChanges
-ThisBuild / turbo := true
 
 inThisBuild(
   List(
+    scalaVersion := "2.12.11",
     organization := "com.github.sideeffffect",
     homepage := Some(url("https://github.com/sideeffffect/sbt-decent-scala")),
     licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
@@ -14,11 +14,9 @@ inThisBuild(
         url("https://github.com/sideeffffect"),
       ),
     ),
+    turbo := true,
   ),
 )
-
-ThisBuild / scalaVersion := "2.12.11"
-ThisBuild / organization := "com.github.sideeffffect"
 
 lazy val root = project
   .in(file("."))
@@ -31,7 +29,7 @@ lazy val root = project
         currentState
       } else {
         println(
-          s"Running ci-release.\n" +
+          s"Running ci-release-cont.\n" +
             s"  branch=${CiReleasePlugin.currentBranch}",
         )
         CiReleasePlugin.setupGpg()
