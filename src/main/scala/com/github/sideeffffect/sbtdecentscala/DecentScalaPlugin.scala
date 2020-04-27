@@ -39,16 +39,10 @@ object DecentScalaPlugin extends AutoPlugin {
           List()
       },
     ) ++
-      addCommandAlias(
-        "check",
-        "; lint; missinglinkCheck; test",
-      ) ++
+      addCommandAlias("check", "; lint; missinglinkCheck; test") ++
       addCommandAlias(
         "lint",
         "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",
       ) ++
-      addCommandAlias(
-        "fix",
-        "; compile:scalafix; test:scalafix; scalafmtSbt; scalafmtAll",
-      )
+      addCommandAlias("fix", "; compile:scalafix; test:scalafix; scalafmtSbt; scalafmtAll")
 }
