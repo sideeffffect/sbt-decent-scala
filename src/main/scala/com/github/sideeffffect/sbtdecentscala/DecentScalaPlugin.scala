@@ -1,5 +1,6 @@
 package com.github.sideeffffect.sbtdecentscala
 
+import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import sbt.Keys._
@@ -9,7 +10,7 @@ import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object DecentScalaPlugin extends AutoPlugin {
 
-  override def requires: Plugins = ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
+  override def requires: Plugins = MissingLinkPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
 
   override def trigger: PluginTrigger = allRequirements
 
@@ -39,7 +40,7 @@ object DecentScalaPlugin extends AutoPlugin {
       },
     ) ++
       addCommandAlias(
-        "check",
+        "lint",
         "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",
       ) ++
       addCommandAlias(
