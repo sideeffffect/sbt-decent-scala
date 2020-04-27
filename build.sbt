@@ -55,11 +55,51 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   scalacOptions ++= Seq(
     "-P:silencer:checkUnused",
   ),
+  ThisBuild / dynverSonatypeSnapshots := {
+    !git.gitCurrentBranch.value.contains("master")
+  },
+  commands += Command.command("ci-release-cont") { currentState =>
+    if (!CiReleasePlugin.isSecure) {
+      println("No access to secret variables, doing nothing")
+      currentState
+    } else {
+      println(
+        s"Running ci-release.\n" +
+          s"  branch=${CiReleasePlugin.currentBranch}",
+      )
+      CiReleasePlugin.setupGpg()
+      // https://github.com/olafurpg/sbt-ci-release/issues/64
+      val reloadKeyFiles =
+        "; set pgpSecretRing := pgpSecretRing.value; set pgpPublicRing := pgpPublicRing.value"
+      if (!CiReleasePlugin.isTag && !git.gitCurrentBranch.value.contains("master")) {
+        if (CiReleasePlugin.isSnapshotVersion(currentState)) {
+          println(s"No tag push, publishing SNAPSHOT")
+          reloadKeyFiles ::
+            sys.env.getOrElse("CI_SNAPSHOT_RELEASE", "+publish") ::
+            currentState
+        } else {
+          // Happens when a tag is pushed right after merge causing the master branch
+          // job to pick up a non-SNAPSHOT version even if TRAVIS_TAG=false.
+          println(
+            "Snapshot releases must have -SNAPSHOT version number, doing nothing",
+          )
+          currentState
+        }
+      } else {
+        println("Tag push detected, publishing a stable release")
+        reloadKeyFiles ::
+          sys.env.getOrElse("CI_CLEAN", "; clean ; sonatypeBundleClean") ::
+          sys.env.getOrElse("CI_RELEASE", "+publishSigned") ::
+          sys.env.getOrElse("CI_SONATYPE_RELEASE", "sonatypeBundleRelease") ::
+          currentState
+      }
+    }
+  },
 )
 
 addCommandAlias(
   "ci",
-  "; check; ci-release",
+  "; check; ci-release-cont",
 )
 
 addCommandAlias(
