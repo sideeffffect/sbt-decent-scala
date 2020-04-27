@@ -1,4 +1,21 @@
 Global / onChangedBuildSource := ReloadOnSourceChanges
+ThisBuild / turbo := true
+
+inThisBuild(
+  List(
+    organization := "com.github.sideeffffect",
+    homepage := Some(url("https://github.com/sideeffffect/sbt-decent-scala")),
+    licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
+    developers := List(
+      Developer(
+        "sideeffffect",
+        "Ondřej Pelech",
+        "ondra.pelech@gmail.com",
+        url("https://github.com/sideeffffect"),
+      ),
+    ),
+  ),
+)
 
 ThisBuild / scalaVersion := "2.12.11"
 ThisBuild / organization := "com.github.sideeffffect"
