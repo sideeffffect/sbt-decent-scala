@@ -90,7 +90,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
 
 addCommandAlias(
   "ci",
-  "; check; ci-release-cont",
+  "; check; publishLocal",
 )
 
 addCommandAlias(
