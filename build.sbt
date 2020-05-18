@@ -31,9 +31,6 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   scalacOptions ++= Seq(
     "-P:silencer:checkUnused",
   ),
-  ThisBuild / dynverSonatypeSnapshots := {
-    !git.gitCurrentBranch.value.contains("master")
-  },
   organization := "com.github.sideeffffect",
   homepage := Some(url("https://github.com/sideeffffect/sbt-decent-scala")),
   licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
@@ -63,8 +60,8 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
       // https://github.com/olafurpg/sbt-ci-release/issues/64
       val reloadKeyFiles =
         "; set pgpSecretRing := pgpSecretRing.value; set pgpPublicRing := pgpPublicRing.value"
-      if (!CiReleasePlugin.isTag && !git.gitCurrentBranch.value.contains("master")) {
-        if (CiReleasePlugin.isSnapshotVersion(currentState)) {
+      if (true) {
+        if (true) {
           println(s"No tag push, publishing SNAPSHOT")
           reloadKeyFiles ::
             sys.env.getOrElse("CI_SNAPSHOT_RELEASE", "+publish") ::
