@@ -13,6 +13,7 @@ lazy val sbtDecentScala = project
     addSbtPlugin(Dependencies.sbtScalafix),
     addSbtPlugin(Dependencies.sbtTpolecat),
     dynverSonatypeSnapshots := false,
+    sonatypePublishToBundle := Some(Opts.resolver.sonatypeSnapshots),
   )
 
 lazy val commonSettings: List[Def.Setting[_]] = List(
