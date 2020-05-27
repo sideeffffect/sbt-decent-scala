@@ -9,7 +9,7 @@ object Dependencies {
     val organizeImports = "0.3.0"
     val sbtMissinglink = "0.3.1"
     val sbtScalafmt = "2.4.0"
-    val sbtScalafix = "0.9.15"
+    val sbtScalafix = "0.9.16"
     val sbtTpolecat = "0.1.11"
     val scaluzzi = "0.1.7"
     val silencer = "1.7.0"
