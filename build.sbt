@@ -23,12 +23,14 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   ),
   semanticdbEnabled := true, // enable SemanticDB
   semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
+  ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
   ThisBuild / scalafixDependencies ++= List(
     Dependencies.organizeImports,
     Dependencies.scaluzzi,
   ),
   scalacOptions ++= Seq(
     "-P:silencer:checkUnused",
+    "-Ywarn-macros:after",
   ),
   ThisBuild / dynverSonatypeSnapshots := {
     !git.gitCurrentBranch.value.contains("master")
@@ -95,7 +97,7 @@ addCommandAlias(
 
 addCommandAlias(
   "check",
-  "; lint; missinglinkCheck; test",
+  "; lint; missinglinkCheck; +test",
 )
 
 addCommandAlias(
