@@ -24,6 +24,7 @@ object DecentScalaPlugin extends AutoPlugin {
       ),
       semanticdbEnabled := true, // enable SemanticDB
       semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
+      ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
       ThisBuild / scalafixDependencies ++= List(
         Dependencies.organizeImports,
         Dependencies.scaluzzi,
@@ -39,7 +40,7 @@ object DecentScalaPlugin extends AutoPlugin {
           List()
       },
     ) ++
-      addCommandAlias("check", "; lint; missinglinkCheck; test") ++
+      addCommandAlias("check", "; lint; missinglinkCheck; +test") ++
       addCommandAlias(
         "lint",
         "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",
