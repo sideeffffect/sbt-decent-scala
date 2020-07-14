@@ -3,7 +3,7 @@ val Dependencies = new {
     val sbtCiRelease = "1.5.3"
     val sbtMissinglink = "0.3.1"
     val sbtScalafmt = "2.4.0"
-    val sbtScalafix = "0.9.18"
+    val sbtScalafix = "0.9.19"
     val sbtTpolecat = "0.1.13"
   }
   val sbtCiRelease = "com.geirsson" % "sbt-ci-release" % Versions.sbtCiRelease
