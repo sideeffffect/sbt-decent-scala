@@ -1,6 +1,8 @@
 package com.github.sideeffffect.sbtdecentscala
 
 import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
+import com.timushev.sbt.rewarn.RewarnPlugin
+import com.typesafe.tools.mima.plugin.MimaPlugin
 import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import sbt.Keys._
@@ -10,11 +12,12 @@ import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object DecentScalaPlugin extends AutoPlugin {
 
-  override def requires: Plugins = MissingLinkPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
+  override def requires: Plugins =
+    MimaPlugin && MissingLinkPlugin && RewarnPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
 
   override def trigger: PluginTrigger = allRequirements
 
-  override def projectSettings: List[Def.Setting[_]] =
+  lazy val decentScalaSettings: List[Def.Setting[_]] =
     List(
       libraryDependencies ++= List(
         compilerPlugin(Dependencies.betterMonadicFor),
@@ -40,7 +43,7 @@ object DecentScalaPlugin extends AutoPlugin {
           List()
       },
     ) ++
-      addCommandAlias("check", "; lint; missinglinkCheck; +test") ++
+      addCommandAlias("check", "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test") ++
       addCommandAlias(
         "lint",
         "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",

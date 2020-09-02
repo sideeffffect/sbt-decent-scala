@@ -1,6 +1,9 @@
+import com.typesafe.tools.mima.core._
+import sbt.Defaults.sbtPluginExtra
+
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.12.11"
+ThisBuild / scalaVersion := "2.12.12"
 
 lazy val sbtDecentScala = project
   .in(file("."))
@@ -8,7 +11,9 @@ lazy val sbtDecentScala = project
   .settings(
     name := "sbt-decent-scala",
     sbtPlugin := true,
+    addSbtPlugin(Dependencies.sbtMima),
     addSbtPlugin(Dependencies.sbtMissinglink),
+    addSbtPlugin(Dependencies.sbtRewarn),
     addSbtPlugin(Dependencies.sbtScalafmt),
     addSbtPlugin(Dependencies.sbtScalafix),
     addSbtPlugin(Dependencies.sbtTpolecat),
@@ -50,7 +55,27 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-core"),
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-slf4j-impl"),
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
+    moduleFilter(organization = "com.timushev.sbt", name = "sbt-rewarn"),
   ),
+  mimaPreviousArtifacts := Set(
+    sbtPluginExtra(
+      organization.value % moduleName.value % "0.4.0+8-55b6f77b",
+      (sbtBinaryVersion in pluginCrossBuild).value,
+      (scalaBinaryVersion in update).value,
+    ),
+  ),
+  mimaBinaryIssueFilters ++= List(
+    ProblemFilters.exclude[DirectMissingMethodProblem](
+      "com.github.sideeffffect.sbtdecentscala.DecentScalaPlugin.projectSettings",
+    ),
+    ProblemFilters.exclude[IncompatibleResultTypeProblem](
+      "com.github.sideeffffect.sbtdecentscala.DecentScalaPlugin.projectSettings",
+    ),
+  ),
+  ciReleaseCont,
+)
+
+lazy val ciReleaseCont = {
   commands += Command.command("ci-release-cont") { currentState =>
     if (!CiReleasePlugin.isSecure) {
       println("No access to secret variables, doing nothing")
@@ -87,8 +112,8 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
           currentState
       }
     }
-  },
-)
+  }
+}
 
 addCommandAlias(
   "ci",
@@ -97,7 +122,7 @@ addCommandAlias(
 
 addCommandAlias(
   "check",
-  "; lint; missinglinkCheck; +test",
+  "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test",
 )
 
 addCommandAlias(
