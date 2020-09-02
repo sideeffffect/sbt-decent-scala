@@ -8,7 +8,7 @@ sbt plugin for decent Scala
 
 ```scala
 // project/plugins.sbt
-addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.4.0")
+addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.5.0")
 ```
 
 
