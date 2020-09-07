@@ -111,7 +111,7 @@ lazy val ciReleaseCont = {
 
 addCommandAlias(
   "ci",
-  "; check; publishLocal",
+  "; check; +publishLocal",
 )
 
 addCommandAlias(
