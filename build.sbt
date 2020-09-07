@@ -57,20 +57,14 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
     moduleFilter(organization = "com.timushev.sbt", name = "sbt-rewarn"),
   ),
-  mimaPreviousArtifacts := Set(
+  mimaPreviousArtifacts := previousStableVersion.value.map { version =>
     sbtPluginExtra(
-      organization.value % moduleName.value % "0.4.0+8-55b6f77b",
+      organization.value % moduleName.value % version,
       (sbtBinaryVersion in pluginCrossBuild).value,
       (scalaBinaryVersion in update).value,
-    ),
-  ),
+    )
+  }.toSet,
   mimaBinaryIssueFilters ++= List(
-    ProblemFilters.exclude[DirectMissingMethodProblem](
-      "com.github.sideeffffect.sbtdecentscala.DecentScalaPlugin.projectSettings",
-    ),
-    ProblemFilters.exclude[IncompatibleResultTypeProblem](
-      "com.github.sideeffffect.sbtdecentscala.DecentScalaPlugin.projectSettings",
-    ),
   ),
   ciReleaseCont,
 )
