@@ -11,6 +11,7 @@ lazy val sbtDecentScala = project
   .settings(
     name := "sbt-decent-scala",
     sbtPlugin := true,
+    addSbtPlugin(Dependencies.sbtDynver),
     addSbtPlugin(Dependencies.sbtMima),
     addSbtPlugin(Dependencies.sbtMissinglink),
     addSbtPlugin(Dependencies.sbtRewarn),
