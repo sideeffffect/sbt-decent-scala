@@ -3,17 +3,20 @@ package com.github.sideeffffect.sbtdecentscala
 import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import com.timushev.sbt.rewarn.RewarnPlugin
 import com.typesafe.tools.mima.plugin.MimaPlugin
+import com.typesafe.tools.mima.plugin.MimaPlugin.autoImport._
 import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import sbt.Keys._
 import sbt._
+import sbtdynver.DynVerPlugin
+import sbtdynver.DynVerPlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin
 import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object DecentScalaPlugin extends AutoPlugin {
 
   override def requires: Plugins =
-    MimaPlugin && MissingLinkPlugin && RewarnPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
+    DynVerPlugin && MimaPlugin && MissingLinkPlugin && RewarnPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
 
   override def trigger: PluginTrigger = allRequirements
 
@@ -49,6 +52,9 @@ object DecentScalaPlugin extends AutoPlugin {
           else
             List()
         },
+        mimaPreviousArtifacts := previousStableVersion.value
+          .map(organization.value %% moduleName.value % _)
+          .toSet,
       ) ++
         addCommandAlias("check", "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test") ++
         addCommandAlias(
