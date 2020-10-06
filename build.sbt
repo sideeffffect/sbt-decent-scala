@@ -28,6 +28,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     Dependencies.silencerLib,
   ),
   semanticdbEnabled := true, // enable SemanticDB
+  semanticdbOptions += "-P:semanticdb:synthetics:on",
   semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
   ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
   ThisBuild / scalafixDependencies ++= List(
