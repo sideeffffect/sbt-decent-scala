@@ -22,7 +22,7 @@ jobs:
           ~/.cache/coursier
           ~/.ivy2/cache
           ~/.sbt
-          gnupg-1.4.23
+          gnupg-*
           !~/.ivy2/cache/**/ivydata-*.properties
           !~/.sbt/**/*.lock
         key: sbt-${{ hashFiles('project/build.properties', 'project/plugins.sbt', 'project/Dependencies.scala', 'build.sbt') }}
