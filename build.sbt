@@ -1,4 +1,3 @@
-import com.typesafe.tools.mima.core._
 import sbt.Defaults.sbtPluginExtra
 
 Global / onChangedBuildSource := ReloadOnSourceChanges

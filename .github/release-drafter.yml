@@ -1,4 +1,9 @@
+name-template: 'v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+categories:
+  - title: '🔧 Dependency updates'
+    labels:
+      - 'dependency-update'
 template: |
-  ## Pull Requests
-
+  ## What’s Changed
   $CHANGES

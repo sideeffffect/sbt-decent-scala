@@ -17,7 +17,6 @@ jobs:
         java-version: adopt@1.11
     - name: Coursier cache
       uses: coursier/cache-action@v5
-    - uses: olafurpg/setup-gpg@v3
     - name: sbt ci-release-cont ${{ github.ref }}
       run: ./sbt ci-release-cont
       env:
