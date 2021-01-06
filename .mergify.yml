@@ -15,12 +15,24 @@ pull_request_rules:
     actions:
       merge:
         method: squash
+      delete_head_branch:
+        force: true
   - name: automatic merge on CI success and review
     conditions:
       - base=master
       - "#review-requested=0"
       - "#changes-requested-reviews-by=0"
       - "#approved-reviews-by>=1"
+      - status-success=ci
+    actions:
+      merge:
+        method: squash
+      delete_head_branch:
+        force: true
+  - name: automatic merge for master when CI passes
+    conditions:
+      - base=master
+      - label=mergify-merge
       - status-success=ci
     actions:
       merge:
