@@ -55,6 +55,7 @@ object DecentScalaPlugin extends AutoPlugin {
         },
         mimaPreviousArtifacts := previousStableVersion.value
           .map(organization.value %% moduleName.value % _)
+          .toList
           .toSet,
       ) ++
         addCommandAlias("check", "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test") ++
