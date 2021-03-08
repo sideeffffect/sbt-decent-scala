@@ -2,7 +2,7 @@ import sbt.Defaults.sbtPluginExtra
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.12.12"
+ThisBuild / scalaVersion := "2.12.13"
 
 lazy val sbtDecentScala = project
   .in(file("."))
@@ -53,10 +53,11 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     ),
   ),
   missinglinkExcludedDependencies ++= List(
-    moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-core"),
-    moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-slf4j-impl"),
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
     moduleFilter(organization = "com.timushev.sbt", name = "sbt-rewarn"),
+    moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-core"),
+    moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-slf4j-impl"),
+    moduleFilter(organization = "org.scala-sbt", name = "main_2.12"),
   ),
   mimaPreviousArtifacts := previousStableVersion.value.map { version =>
     sbtPluginExtra(
