@@ -1,13 +1,12 @@
-name: Auto approve
+name: Dependabot auto merge
 
 on:
   pull_request_target
 
 jobs:
-  auto-approve:
+  dependabot-auto-merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: hmarr/auto-approve-action@v2.0.0
-        if: github.actor == 'scala-steward'
+      - uses: ahmadnassri/action-dependabot-auto-merge@v2.3.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
