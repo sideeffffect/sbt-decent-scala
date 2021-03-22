@@ -17,6 +17,16 @@ pull_request_rules:
         method: squash
       delete_head_branch:
         force: true
+  - name: merge Dependabot's PRs
+    conditions:
+      - base=master
+      - author=dependabot[bot]
+      - status-success=ci
+    actions:
+      merge:
+        method: squash
+      delete_head_branch:
+        force: true
   - name: automatic merge on CI success and review
     conditions:
       - base=master
