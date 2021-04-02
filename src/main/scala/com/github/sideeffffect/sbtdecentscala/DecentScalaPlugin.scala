@@ -50,8 +50,10 @@ object DecentScalaPlugin extends AutoPlugin {
         ),
         scalacOptions ++= List(
           "-P:silencer:checkUnused",
-          "-Ywarn-macros:after",
-        ),
+        ) ++ (CrossVersion.partialVersion(scalaVersion.value) match {
+          case Some((2, 11)) => List()
+          case _             => List("-Ywarn-macros:after")
+        }),
         scalacOptions --= {
           if (!sys.env.contains("CI"))
             List("-Xfatal-warnings") // to enable Scalafix
