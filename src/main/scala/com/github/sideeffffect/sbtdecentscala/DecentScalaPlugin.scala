@@ -33,7 +33,7 @@ object DecentScalaPlugin extends AutoPlugin {
     lazy val decentScalaSettings: List[Def.Setting[_]] =
       List(
         scalaVersion := decentScalaVersion213,
-        crossScalaVersions := Seq(decentScalaVersion211, decentScalaVersion212, decentScalaVersion213),
+        crossScalaVersions := Seq(decentScalaVersion212, decentScalaVersion213),
         libraryDependencies ++= List(
           compilerPlugin(Dependencies.betterMonadicFor),
           compilerPlugin(Dependencies.kindProjector),
