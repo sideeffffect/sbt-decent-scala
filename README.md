@@ -8,7 +8,7 @@ sbt plugin for decent Scala
 
 ```scala
 // project/plugins.sbt
-addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.6.4")
+addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.6.6")
 ```
 
 
@@ -16,4 +16,4 @@ addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.6.4")
 [Badge-GitHubActions]: https://github.com/sideeffffect/sbt-decent-scala/workflows/Release/badge.svg?branch=master "GitHub Actions badge"
 
 [Link-SonatypeReleases]: https://oss.sonatype.org/content/repositories/releases/com/github/sideeffffect/sbt-decent-scala_2.12_1.0/ "Sonatype Releases link"
-[Badge-SonatypeReleases]: https://img.shields.io/badge/maven--central-continuously%20published-green "Sonatype Releases badge"
+[Badge-SonatypeReleases]: https://maven-badges.herokuapp.com/maven-central/com.github.sideeffffect/sbt-decent-scala/badge.svg "Sonatype Releases badge"
