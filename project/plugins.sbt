@@ -1,7 +1,7 @@
 val Dependencies = new {
   val Versions = new {
     val sbtCiRelease = "1.5.7"
-    val sbtMima = "0.8.1"
+    val sbtMima = "0.9.0"
     val sbtMissinglink = "0.3.2"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.2"
