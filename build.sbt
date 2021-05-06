@@ -54,6 +54,8 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
       url("https://github.com/sideeffffect"),
     ),
   ),
+  buildInfoKeys := List[BuildInfoKey](organization, moduleName, version),
+  buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", ""),
   Compile / packageBin / packageOptions += Package.ManifestAttributes(
     "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", ""),
   ),
