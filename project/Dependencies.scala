@@ -7,6 +7,7 @@ object Dependencies {
     val betterMonadicFor = "0.3.1"
     val kindProjector = "0.10.3"
     val organizeImports = "0.5.0"
+    val sbtBuildinfo = "0.10.0"
     val sbtDynver = "4.1.1"
     val sbtMima = "0.9.0"
     val sbtMissinglink = "0.3.2"
@@ -22,6 +23,7 @@ object Dependencies {
   val betterMonadicFor = "com.olegpy" %% "better-monadic-for" % Versions.betterMonadicFor
   val kindProjector = "org.typelevel" %% "kind-projector" % Versions.kindProjector
   val organizeImports = "com.github.liancheng" %% "organize-imports" % Versions.organizeImports
+  val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
   val sbtDynver = "com.dwijnand" % "sbt-dynver" % Versions.sbtDynver
   val sbtMima = "com.typesafe" % "sbt-mima-plugin" % Versions.sbtMima
   val sbtMissinglink = "ch.epfl.scala" % "sbt-missinglink" % Versions.sbtMissinglink

@@ -8,6 +8,8 @@ import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import sbt.Keys._
 import sbt._
+import sbtbuildinfo.BuildInfoKey
+import sbtbuildinfo.BuildInfoKeys._
 import sbtdynver.DynVerPlugin
 import sbtdynver.DynVerPlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin
@@ -60,6 +62,11 @@ object DecentScalaPlugin extends AutoPlugin {
           else
             List()
         },
+        buildInfoKeys := List[BuildInfoKey](organization, moduleName, version),
+        buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", ""),
+        Compile / packageBin / packageOptions += Package.ManifestAttributes(
+          "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", ""),
+        ),
         mimaPreviousArtifacts := previousStableVersion.value
           .map(organization.value %% moduleName.value % _)
           .toList

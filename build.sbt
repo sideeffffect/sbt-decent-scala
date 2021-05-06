@@ -10,6 +10,7 @@ lazy val sbtDecentScala = project
   .settings(
     name := "sbt-decent-scala",
     sbtPlugin := true,
+    addSbtPlugin(Dependencies.sbtBuildinfo),
     addSbtPlugin(Dependencies.sbtDynver),
     addSbtPlugin(Dependencies.sbtMima),
     addSbtPlugin(Dependencies.sbtMissinglink),
@@ -18,6 +19,7 @@ lazy val sbtDecentScala = project
     addSbtPlugin(Dependencies.sbtScalafix),
     addSbtPlugin(Dependencies.sbtTpolecat),
   )
+  .enablePlugins(BuildInfoPlugin)
 
 lazy val commonSettings: List[Def.Setting[_]] = List(
   libraryDependencies ++= List(
@@ -51,6 +53,9 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
       "ondra.pelech@gmail.com",
       url("https://github.com/sideeffffect"),
     ),
+  ),
+  Compile / packageBin / packageOptions += Package.ManifestAttributes(
+    "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", ""),
   ),
   missinglinkExcludedDependencies ++= List(
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
