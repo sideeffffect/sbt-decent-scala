@@ -16,7 +16,7 @@ object Dependencies {
     val sbtScalafix = "0.9.27"
     val sbtTpolecat = "0.1.17"
     val scaluzzi = "0.1.18"
-    val silencer = "1.7.3"
+    val silencer = "1.7.4"
 
   }
 
