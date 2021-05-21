@@ -30,7 +30,7 @@ object DecentScalaPlugin extends AutoPlugin {
 
   trait DecentScala {
     lazy val decentScalaVersion211 = "2.11.12"
-    lazy val decentScalaVersion212 = "2.12.13"
+    lazy val decentScalaVersion212 = "2.13.6"
     lazy val decentScalaVersion213 = "2.13.5"
     lazy val decentScalaSettings: List[Def.Setting[_]] =
       List(
