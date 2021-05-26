@@ -7,7 +7,7 @@ val Dependencies = new {
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.2"
     val sbtScalafix = "0.9.28"
-    val sbtTpolecat = "0.1.18"
+    val sbtTpolecat = "0.1.19"
   }
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
   val sbtCiRelease = "com.geirsson" % "sbt-ci-release" % Versions.sbtCiRelease
