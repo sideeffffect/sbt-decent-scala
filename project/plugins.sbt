@@ -6,7 +6,7 @@ val Dependencies = new {
     val sbtMissinglink = "0.3.2"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.2"
-    val sbtScalafix = "0.9.28"
+    val sbtScalafix = "0.9.29"
     val sbtTpolecat = "0.1.19"
   }
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
