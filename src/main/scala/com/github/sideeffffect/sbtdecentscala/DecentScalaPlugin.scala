@@ -29,13 +29,14 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
+    lazy val decentScalaVersion30 = "3.0.0"
+    lazy val decentScalaVersion213 = "2.13.6"
+    lazy val decentScalaVersion212 = "2.12.14"
     lazy val decentScalaVersion211 = "2.11.12"
-    lazy val decentScalaVersion212 = "2.13.6"
-    lazy val decentScalaVersion213 = "2.13.5"
     lazy val decentScalaSettings: List[Def.Setting[_]] =
       List(
         scalaVersion := decentScalaVersion213,
-        crossScalaVersions := Seq(decentScalaVersion213, decentScalaVersion212, decentScalaVersion211),
+        crossScalaVersions := Seq(decentScalaVersion213, decentScalaVersion212),
         libraryDependencies ++= List(
           compilerPlugin(Dependencies.betterMonadicFor),
           compilerPlugin(Dependencies.kindProjector),
