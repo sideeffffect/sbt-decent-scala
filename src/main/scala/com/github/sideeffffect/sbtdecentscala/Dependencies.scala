@@ -10,7 +10,7 @@ object Dependencies {
     val kindProjector: String = "0.13.2"
     val organizeImports: String = "0.5.0"
     val scaluzzi: String = "0.1.20"
-    val silencer: String = "1.7.5"
+    val silencer: String = "1.7.6"
 
   }
 
