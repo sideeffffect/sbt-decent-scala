@@ -1,7 +1,7 @@
 val Dependencies = new {
   val Versions = new {
     val sbtBuildinfo = "0.10.0"
-    val sbtCiRelease = "1.5.7"
+    val sbtCiRelease = "1.5.9"
     val sbtMima = "1.0.0"
     val sbtMissinglink = "0.3.2"
     val sbtRewarn = "0.1.3"
@@ -10,7 +10,7 @@ val Dependencies = new {
     val sbtTpolecat = "0.1.20"
   }
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
-  val sbtCiRelease = "com.geirsson" % "sbt-ci-release" % Versions.sbtCiRelease
+  val sbtCiRelease = "com.github.sbt" % "sbt-ci-release" % Versions.sbtCiRelease
   val sbtMima = "com.typesafe" % "sbt-mima-plugin" % Versions.sbtMima
   val sbtMissinglink = "ch.epfl.scala" % "sbt-missinglink" % Versions.sbtMissinglink
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
