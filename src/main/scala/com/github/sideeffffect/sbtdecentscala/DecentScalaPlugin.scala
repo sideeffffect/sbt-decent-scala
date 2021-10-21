@@ -29,7 +29,7 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
-    def decentScalaVersion30 = "3.0.0"
+    def decentScalaVersion30 = "3.1.0"
     def decentScalaVersion213 = "2.13.6"
     def decentScalaVersion212 = "2.12.15"
     def decentScalaVersion211 = "2.11.12"
