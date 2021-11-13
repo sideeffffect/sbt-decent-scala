@@ -61,6 +61,10 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
   ),
   missinglinkExcludedDependencies ++= List(
+    moduleFilter( // fails on Java 8: `Problem: Method not found: java.nio.LongBuffer.position(int)`
+      organization = "com.googlecode.javaewah",
+      name = "JavaEWAH",
+    ),
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
     moduleFilter(organization = "com.timushev.sbt", name = "sbt-rewarn"),
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-core"),
