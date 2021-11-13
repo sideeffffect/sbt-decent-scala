@@ -2,7 +2,7 @@ import sbt.Defaults.sbtPluginExtra
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.12.14" // scala-steward:off
+ThisBuild / scalaVersion := "2.12.15" // scala-steward:off
 
 lazy val sbtDecentScala = project
   .in(file("."))
@@ -39,6 +39,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   scalacOptions ++= Seq(
     "-P:silencer:checkUnused",
     "-Ywarn-macros:after",
+    "-Xsource:3",
   ),
   ThisBuild / dynverSonatypeSnapshots := {
     !git.gitCurrentBranch.value.contains("master")
@@ -55,9 +56,9 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     ),
   ),
   buildInfoKeys := List[BuildInfoKey](organization, moduleName, version),
-  buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", ""),
+  buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", "."),
   Compile / packageBin / packageOptions += Package.ManifestAttributes(
-    "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", ""),
+    "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
   ),
   missinglinkExcludedDependencies ++= List(
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
@@ -69,8 +70,8 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   mimaPreviousArtifacts := previousStableVersion.value.map { version =>
     sbtPluginExtra(
       organization.value % moduleName.value % version,
-      (sbtBinaryVersion in pluginCrossBuild).value,
-      (scalaBinaryVersion in update).value,
+      (pluginCrossBuild / sbtBinaryVersion).value,
+      (update / scalaBinaryVersion).value,
     )
   }.toSet,
   mimaBinaryIssueFilters ++= List(
@@ -130,9 +131,9 @@ addCommandAlias(
 
 addCommandAlias(
   "lint",
-  "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",
+  "; scalafmtSbtCheck; scalafmtCheckAll; Compile/scalafix --check; Test/scalafix --check",
 )
 addCommandAlias(
   "fix",
-  "; compile:scalafix; test:scalafix; scalafmtSbt; scalafmtAll",
+  "; Compile/scalafix; Test/scalafix; scalafmtSbt; scalafmtAll",
 )
