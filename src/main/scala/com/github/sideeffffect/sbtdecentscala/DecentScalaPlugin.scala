@@ -29,14 +29,19 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
-    def decentScalaVersion30 = "3.1.0"
-    def decentScalaVersion213 = "2.13.6"
+    def decentScalaVersion3 = "3.1.0"
+    def decentScalaVersion213 = "2.13.7"
     def decentScalaVersion212 = "2.12.15"
     def decentScalaVersion211 = "2.11.12"
     def decentScalaSettings: List[Def.Setting[_]] =
       List(
         scalaVersion := decentScalaVersion213,
-        crossScalaVersions := Seq(decentScalaVersion213, decentScalaVersion212, decentScalaVersion211),
+        crossScalaVersions := List(
+          decentScalaVersion3,
+          decentScalaVersion213,
+          decentScalaVersion212,
+          decentScalaVersion211,
+        ),
         libraryDependencies ++= List(
           compilerPlugin(Dependencies.betterMonadicFor),
           compilerPlugin(Dependencies.kindProjector),
@@ -54,8 +59,13 @@ object DecentScalaPlugin extends AutoPlugin {
         scalacOptions ++= List(
           "-P:silencer:checkUnused",
         ) ++ (CrossVersion.partialVersion(scalaVersion.value) match {
-          case Some((2, 11)) => List()
-          case _             => List("-Ywarn-macros:after")
+          case Some((2, 12)) | Some((2, 13)) =>
+            List(
+              "-Ywarn-macros:after",
+              "-Xsource:3",
+            )
+          case _ =>
+            List()
         }),
         scalacOptions --= {
           if (!sys.env.contains("CI"))
@@ -64,9 +74,9 @@ object DecentScalaPlugin extends AutoPlugin {
             List()
         },
         buildInfoKeys := List[BuildInfoKey](organization, moduleName, version),
-        buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", ""),
+        buildInfoPackage := s"${organization.value}.${moduleName.value}".replace("-", "."),
         Compile / packageBin / packageOptions += Package.ManifestAttributes(
-          "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", ""),
+          "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
         ),
         mimaPreviousArtifacts := previousStableVersion.value
           .map(organization.value %% moduleName.value % _)
@@ -76,8 +86,8 @@ object DecentScalaPlugin extends AutoPlugin {
         addCommandAlias("check", "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test") ++
         addCommandAlias(
           "lint",
-          "; scalafmtSbtCheck; scalafmtCheckAll; compile:scalafix --check; test:scalafix --check",
+          "; scalafmtSbtCheck; scalafmtCheckAll; Compile/scalafix --check; Test/scalafix --check",
         ) ++
-        addCommandAlias("fix", "; compile:scalafix; test:scalafix; scalafmtSbt; scalafmtAll")
+        addCommandAlias("fix", "; Compile/scalafix; Test/scalafix; scalafmtSbt; scalafmtAll")
   }
 }
