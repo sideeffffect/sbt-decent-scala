@@ -43,17 +43,19 @@ object DecentScalaPlugin extends AutoPlugin {
           decentScalaVersion211,
         ),
         libraryDependencies ++= {
-          if (scalaVersion.value == decentScalaVersion3)
-            List(
-              "com.github.ghik" % s"silencer-lib_$decentScalaVersion213" % Dependencies.Versions.silencer % Provided,
-            )
-          else
-            List(
-              compilerPlugin(Dependencies.betterMonadicFor),
-              compilerPlugin(Dependencies.kindProjector),
-              compilerPlugin(Dependencies.silencer),
-              Dependencies.silencerLib,
-            )
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, _)) =>
+              List(
+                compilerPlugin(Dependencies.betterMonadicFor),
+                compilerPlugin(Dependencies.kindProjector),
+                compilerPlugin(Dependencies.silencer),
+                Dependencies.silencerLib,
+              )
+            case _ =>
+              List(
+                "com.github.ghik" % s"silencer-lib_$decentScalaVersion213" % Dependencies.Versions.silencer % Provided,
+              )
+          }
         },
         semanticdbEnabled := true, // enable SemanticDB
         semanticdbOptions += "-P:semanticdb:synthetics:on",
