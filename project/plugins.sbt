@@ -1,5 +1,6 @@
 val Dependencies = new {
   val Versions = new {
+    val missinglink = "0.2.5"
     val sbtBuildinfo = "0.10.0"
     val sbtCiRelease = "1.5.10"
     val sbtMima = "1.0.1"
@@ -9,6 +10,7 @@ val Dependencies = new {
     val sbtScalafix = "0.9.32"
     val sbtTpolecat = "0.1.20"
   }
+  val missinglink = "com.spotify" % "missinglink-core" % Versions.missinglink
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
   val sbtCiRelease = "com.github.sbt" % "sbt-ci-release" % Versions.sbtCiRelease
   val sbtMima = "com.typesafe" % "sbt-mima-plugin" % Versions.sbtMima
@@ -27,3 +29,7 @@ addSbtPlugin(Dependencies.sbtRewarn)
 addSbtPlugin(Dependencies.sbtScalafmt)
 addSbtPlugin(Dependencies.sbtScalafix)
 addSbtPlugin(Dependencies.sbtTpolecat)
+
+libraryDependencies ++= List(
+  Dependencies.missinglink,
+)
