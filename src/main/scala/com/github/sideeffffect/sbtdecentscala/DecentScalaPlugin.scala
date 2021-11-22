@@ -42,12 +42,21 @@ object DecentScalaPlugin extends AutoPlugin {
           decentScalaVersion212,
           decentScalaVersion211,
         ),
-        libraryDependencies ++= List(
-          compilerPlugin(Dependencies.betterMonadicFor),
-          compilerPlugin(Dependencies.kindProjector),
-          compilerPlugin(Dependencies.silencer),
-          Dependencies.silencerLib,
-        ),
+        libraryDependencies ++= {
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, _)) =>
+              List(
+                compilerPlugin(Dependencies.betterMonadicFor),
+                compilerPlugin(Dependencies.kindProjector),
+                compilerPlugin(Dependencies.silencer),
+                Dependencies.silencerLib,
+              )
+            case _ =>
+              List(
+                "com.github.ghik" % s"silencer-lib_$decentScalaVersion213" % Dependencies.Versions.silencer % Provided,
+              )
+          }
+        },
         semanticdbEnabled := true, // enable SemanticDB
         semanticdbOptions += "-P:semanticdb:synthetics:on",
         semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
