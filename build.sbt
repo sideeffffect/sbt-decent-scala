@@ -26,6 +26,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     compilerPlugin(Dependencies.betterMonadicFor),
     compilerPlugin(Dependencies.kindProjector),
     compilerPlugin(Dependencies.silencer),
+    Dependencies.missinglink,
     Dependencies.silencerLib,
   ),
   semanticdbEnabled := true, // enable SemanticDB
@@ -36,7 +37,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     Dependencies.organizeImports,
     Dependencies.scaluzzi,
   ),
-  scalacOptions ++= Seq(
+  scalacOptions ++= List(
     "-P:silencer:checkUnused",
     "-Ywarn-macros:after",
     "-Xsource:3",

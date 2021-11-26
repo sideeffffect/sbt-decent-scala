@@ -57,7 +57,12 @@ object DecentScalaPlugin extends AutoPlugin {
               )
           }
         },
-        semanticdbEnabled := true, // enable SemanticDB
+        semanticdbEnabled := {
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, _)) => true
+            case _            => false
+          }
+        },
         semanticdbOptions += "-P:semanticdb:synthetics:on",
         semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
         ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
@@ -65,17 +70,27 @@ object DecentScalaPlugin extends AutoPlugin {
           Dependencies.organizeImports,
           Dependencies.scaluzzi,
         ),
-        scalacOptions ++= List(
-          "-P:silencer:checkUnused",
-        ) ++ (CrossVersion.partialVersion(scalaVersion.value) match {
-          case Some((2, 12)) | Some((2, 13)) =>
-            List(
-              "-Ywarn-macros:after",
-              "-Xsource:3",
-            )
-          case _ =>
-            List()
-        }),
+        scalacOptions ++= {
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, _)) =>
+              List(
+                "-P:silencer:checkUnused",
+              )
+            case _ =>
+              List()
+          }
+        },
+        scalacOptions ++= {
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, 12)) | Some((2, 13)) =>
+              List(
+                "-Ywarn-macros:after",
+                "-Xsource:3",
+              )
+            case _ =>
+              List()
+          }
+        },
         scalacOptions --= {
           if (!sys.env.contains("CI"))
             List("-Xfatal-warnings") // to enable Scalafix
