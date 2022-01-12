@@ -14,10 +14,10 @@ object Dependencies {
     val sbtMissinglink = "0.3.3"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.6"
-    val sbtScalafix = "0.9.33"
+    val sbtScalafix = "0.9.34"
     val sbtTpolecat = "0.1.20"
     val scaluzzi = "0.1.21"
-    val silencer = "1.7.7"
+    val silencer = "1.7.8"
 
   }
 
