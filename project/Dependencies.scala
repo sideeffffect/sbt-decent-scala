@@ -8,7 +8,7 @@ object Dependencies {
     val kindProjector = "0.13.2"
     val missinglink = "0.2.5"
     val organizeImports = "0.6.0"
-    val sbtBuildinfo = "0.10.0"
+    val sbtBuildinfo = "0.11.0"
     val sbtDynver = "4.1.1"
     val sbtMima = "1.0.1"
     val sbtMissinglink = "0.3.3"
