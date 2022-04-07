@@ -10,7 +10,7 @@ object Dependencies {
     val organizeImports = "0.6.0"
     val sbtBuildinfo = "0.11.0"
     val sbtDynver = "4.1.1"
-    val sbtMima = "1.0.1"
+    val sbtMima = "1.1.0"
     val sbtMissinglink = "0.3.3"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.6"
