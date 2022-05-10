@@ -91,6 +91,16 @@ object DecentScalaPlugin extends AutoPlugin {
               List()
           }
         },
+        scalacOptions ++= {
+          CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((3, _)) =>
+              List(
+                "-Xmax-inlines:1024",
+              )
+            case _ =>
+              List()
+          }
+        },
         scalacOptions --= {
           if (!sys.env.contains("CI"))
             List("-Xfatal-warnings") // to enable Scalafix
