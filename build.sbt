@@ -12,12 +12,12 @@ lazy val sbtDecentScala = project
     sbtPlugin := true,
     addSbtPlugin(Dependencies.sbtBuildinfo),
     addSbtPlugin(Dependencies.sbtDynver),
-    addSbtPlugin(Dependencies.sbtMima),
     addSbtPlugin(Dependencies.sbtMissinglink),
     addSbtPlugin(Dependencies.sbtRewarn),
     addSbtPlugin(Dependencies.sbtScalafmt),
     addSbtPlugin(Dependencies.sbtScalafix),
     addSbtPlugin(Dependencies.sbtTpolecat),
+    addSbtPlugin(Dependencies.sbtVersionPolicy),
   )
   .enablePlugins(BuildInfoPlugin)
 

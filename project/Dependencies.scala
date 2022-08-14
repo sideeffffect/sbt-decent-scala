@@ -10,12 +10,12 @@ object Dependencies {
     val organizeImports = "0.6.0"
     val sbtBuildinfo = "0.11.0"
     val sbtDynver = "4.1.1"
-    val sbtMima = "1.1.0"
     val sbtMissinglink = "0.3.3"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.4.6"
     val sbtScalafix = "0.10.1"
     val sbtTpolecat = "0.4.1"
+    val sbtVersionPolicy = "2.0.1"
     val scaluzzi = "0.1.23"
     val silencer = "1.7.9"
 
@@ -27,12 +27,12 @@ object Dependencies {
   val organizeImports = "com.github.liancheng" %% "organize-imports" % Versions.organizeImports
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
   val sbtDynver = "com.dwijnand" % "sbt-dynver" % Versions.sbtDynver
-  val sbtMima = "com.typesafe" % "sbt-mima-plugin" % Versions.sbtMima
   val sbtMissinglink = "ch.epfl.scala" % "sbt-missinglink" % Versions.sbtMissinglink
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
   val sbtScalafmt = "org.scalameta" % "sbt-scalafmt" % Versions.sbtScalafmt
   val sbtScalafix = "ch.epfl.scala" % "sbt-scalafix" % Versions.sbtScalafix
   val sbtTpolecat = "io.github.davidgregory084" % "sbt-tpolecat" % Versions.sbtTpolecat
+  val sbtVersionPolicy = "ch.epfl.scala" % "sbt-version-policy" % Versions.sbtVersionPolicy
   val scaluzzi = "com.github.vovapolu" %% "scaluzzi" % Versions.scaluzzi
   val silencer = "com.github.ghik" % "silencer-plugin" % Versions.silencer cross CrossVersion.full
   val silencerLib = "com.github.ghik" % "silencer-lib" % Versions.silencer % Provided cross CrossVersion.full
