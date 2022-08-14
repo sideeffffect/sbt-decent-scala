@@ -2,23 +2,22 @@ package com.github.sideeffffect.sbtdecentscala
 
 import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import com.timushev.sbt.rewarn.RewarnPlugin
-import com.typesafe.tools.mima.plugin.MimaPlugin
-import com.typesafe.tools.mima.plugin.MimaPlugin.autoImport._
 import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
-import sbt.Keys._
-import sbt._
+import sbt.Keys.*
+import sbt.*
 import sbtbuildinfo.BuildInfoKey
-import sbtbuildinfo.BuildInfoKeys._
+import sbtbuildinfo.BuildInfoKeys.*
 import sbtdynver.DynVerPlugin
-import sbtdynver.DynVerPlugin.autoImport._
+import sbtversionpolicy.SbtVersionPolicyPlugin
+import sbtversionpolicy.SbtVersionPolicyPlugin.autoImport.*
 import scalafix.sbt.ScalafixPlugin
-import scalafix.sbt.ScalafixPlugin.autoImport._
+import scalafix.sbt.ScalafixPlugin.autoImport.*
 
 object DecentScalaPlugin extends AutoPlugin {
 
   override def requires: Plugins =
-    DynVerPlugin && MimaPlugin && MissingLinkPlugin && RewarnPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
+    DynVerPlugin && MissingLinkPlugin && RewarnPlugin && SbtVersionPolicyPlugin && ScalafixPlugin && ScalafmtPlugin && TpolecatPlugin
 
   override def trigger: PluginTrigger = allRequirements
 
@@ -112,12 +111,10 @@ object DecentScalaPlugin extends AutoPlugin {
         Compile / packageBin / packageOptions += Package.ManifestAttributes(
           "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
         ),
-        mimaPreviousArtifacts := previousStableVersion.value
-          .map(organization.value %% moduleName.value % _)
-          .toList
-          .toSet,
+        ThisBuild / versionPolicyIntention := Compatibility.BinaryCompatible,
+        ThisBuild / versionPolicyIgnoredInternalDependencyVersions := Some("^\\d+\\.\\d+\\.\\d+\\+\\d+".r),
       ) ++
-        addCommandAlias("check", "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test") ++
+        addCommandAlias("check", "; lint; +missinglinkCheck; +versionPolicyCheck; +test") ++
         addCommandAlias(
           "lint",
           "; scalafmtSbtCheck; scalafmtCheckAll; Compile/scalafix --check; Test/scalafix --check",

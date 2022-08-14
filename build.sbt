@@ -12,12 +12,12 @@ lazy val sbtDecentScala = project
     sbtPlugin := true,
     addSbtPlugin(Dependencies.sbtBuildinfo),
     addSbtPlugin(Dependencies.sbtDynver),
-    addSbtPlugin(Dependencies.sbtMima),
     addSbtPlugin(Dependencies.sbtMissinglink),
     addSbtPlugin(Dependencies.sbtRewarn),
     addSbtPlugin(Dependencies.sbtScalafmt),
     addSbtPlugin(Dependencies.sbtScalafix),
     addSbtPlugin(Dependencies.sbtTpolecat),
+    addSbtPlugin(Dependencies.sbtVersionPolicy),
   )
   .enablePlugins(BuildInfoPlugin)
 
@@ -72,15 +72,9 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-slf4j-impl"),
     moduleFilter(organization = "org.scala-sbt", name = "main_2.12"),
   ),
-  mimaPreviousArtifacts := previousStableVersion.value.map { version =>
-    sbtPluginExtra(
-      organization.value % moduleName.value % version,
-      (pluginCrossBuild / sbtBinaryVersion).value,
-      (update / scalaBinaryVersion).value,
-    )
-  }.toSet,
   mimaBinaryIssueFilters ++= List(
   ),
+  ThisBuild / versionPolicyIntention := Compatibility.None,
   ciReleaseCont,
 )
 
@@ -131,7 +125,7 @@ addCommandAlias(
 
 addCommandAlias(
   "check",
-  "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test",
+  "; lint; +missinglinkCheck; +versionPolicyCheck; +test",
 )
 
 addCommandAlias(
