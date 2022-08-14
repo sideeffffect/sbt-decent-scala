@@ -4,8 +4,8 @@ import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import com.timushev.sbt.rewarn.RewarnPlugin
 import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
-import sbt.*
 import sbt.Keys.*
+import sbt.*
 import sbtbuildinfo.BuildInfoKey
 import sbtbuildinfo.BuildInfoKeys.*
 import sbtdynver.DynVerPlugin

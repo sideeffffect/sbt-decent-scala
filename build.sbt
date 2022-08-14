@@ -131,7 +131,7 @@ addCommandAlias(
 
 addCommandAlias(
   "check",
-  "; lint; +missinglinkCheck; +mimaReportBinaryIssues; +test",
+  "; lint; +missinglinkCheck; +versionPolicyCheck; +test",
 )
 
 addCommandAlias(
