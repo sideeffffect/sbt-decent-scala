@@ -73,7 +73,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   ),
   mimaBinaryIssueFilters ++= List(
   ),
-  ThisBuild / versionPolicyIntention := Compatibility.BinaryCompatible,
+  ThisBuild / versionPolicyIntention := Compatibility.None,
   ciReleaseCont,
 )
 
