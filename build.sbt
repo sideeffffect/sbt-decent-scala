@@ -26,6 +26,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     compilerPlugin(Dependencies.betterMonadicFor),
     compilerPlugin(Dependencies.kindProjector),
     compilerPlugin(Dependencies.silencer),
+    compilerPlugin(Dependencies.zerowaste),
     Dependencies.missinglink,
     Dependencies.silencerLib,
   ),
@@ -61,6 +62,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   Compile / packageBin / packageOptions += Package.ManifestAttributes(
     "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
   ),
+  version ~= (_.replace('+', '-')),
   missinglinkExcludedDependencies ++= List(
     moduleFilter( // fails on Java 8: `Problem: Method not found: java.nio.LongBuffer.position(int)`
       organization = "com.googlecode.javaewah",
