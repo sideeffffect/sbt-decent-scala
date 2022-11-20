@@ -23,6 +23,6 @@ object Dependencies {
   val silencer: ModuleID = "com.github.ghik" % "silencer-plugin" % Versions.silencer cross CrossVersion.full
   val silencerLib: ModuleID =
     "com.github.ghik" % "silencer-lib" % Versions.silencer % Provided cross CrossVersion.full
-  val zerowaste = "com.github.ghik" % "zerowaste" % Versions.zerowaste cross CrossVersion.full
+  val zerowaste: ModuleID = "com.github.ghik" % "zerowaste" % Versions.zerowaste cross CrossVersion.full
 
 }
