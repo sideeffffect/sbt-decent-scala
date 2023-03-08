@@ -6,7 +6,7 @@ object Dependencies {
 
     val betterMonadicFor = "0.3.1"
     val kindProjector = "0.13.2"
-    val missinglink = "0.2.6"
+    val missinglink = "0.2.7"
     val organizeImports = "0.6.0"
     val sbtBuildinfo = "0.11.0"
     val sbtDynver = "4.1.1"
