@@ -10,7 +10,8 @@ object Dependencies {
     val kindProjector: String = "0.13.2"
     val organizeImports: String = "0.6.0"
     val scaluzzi: String = "0.1.23"
-    val silencer: String = "1.7.11"
+    val silencer: String = "1.7.12"
+    val zerowaste = "0.2.5"
 
   }
 
@@ -22,5 +23,6 @@ object Dependencies {
   val silencer: ModuleID = "com.github.ghik" % "silencer-plugin" % Versions.silencer cross CrossVersion.full
   val silencerLib: ModuleID =
     "com.github.ghik" % "silencer-lib" % Versions.silencer % Provided cross CrossVersion.full
+  val zerowaste: ModuleID = "com.github.ghik" % "zerowaste" % Versions.zerowaste cross CrossVersion.full
 
 }

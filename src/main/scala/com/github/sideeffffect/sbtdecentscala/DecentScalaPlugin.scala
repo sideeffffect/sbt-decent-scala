@@ -28,9 +28,9 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
-    def decentScalaVersion3 = "3.2.0"
-    def decentScalaVersion213 = "2.13.9"
-    def decentScalaVersion212 = "2.12.17"
+    def decentScalaVersion3 = "3.2.1"
+    def decentScalaVersion213 = "2.13.10"
+    def decentScalaVersion212 = "2.12.17" // scala-steward:off
     def decentScalaVersion211 = "2.11.12"
     def decentScalaSettings: List[Def.Setting[_]] =
       List(
@@ -43,11 +43,19 @@ object DecentScalaPlugin extends AutoPlugin {
         ),
         libraryDependencies ++= {
           CrossVersion.partialVersion(scalaVersion.value) match {
+            case Some((2, 11)) =>
+              List(
+                compilerPlugin(Dependencies.betterMonadicFor),
+                compilerPlugin(Dependencies.kindProjector),
+                compilerPlugin(Dependencies.silencer),
+                Dependencies.silencerLib,
+              )
             case Some((2, _)) =>
               List(
                 compilerPlugin(Dependencies.betterMonadicFor),
                 compilerPlugin(Dependencies.kindProjector),
                 compilerPlugin(Dependencies.silencer),
+                compilerPlugin(Dependencies.zerowaste),
                 Dependencies.silencerLib,
               )
             case _ =>
@@ -111,6 +119,7 @@ object DecentScalaPlugin extends AutoPlugin {
         Compile / packageBin / packageOptions += Package.ManifestAttributes(
           "Automatic-Module-Name" -> s"${organization.value}.${moduleName.value}".replace("-", "."),
         ),
+        version ~= (_.replace('+', '-')),
         ThisBuild / versionPolicyIntention := Compatibility.BinaryCompatible,
         ThisBuild / versionPolicyIgnoredInternalDependencyVersions := Some("^\\d+\\.\\d+\\.\\d+\\+\\d+".r),
       ) ++
