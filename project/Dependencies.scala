@@ -14,7 +14,7 @@ object Dependencies {
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.0"
     val sbtScalafix = "0.10.4"
-    val sbtTpolecat = "0.4.4"
+    val sbtTpolecat = "0.5.0"
     val sbtVersionPolicy = "2.1.2"
     val scaluzzi = "0.1.23"
     val silencer = "1.17.13"
@@ -32,7 +32,7 @@ object Dependencies {
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
   val sbtScalafmt = "org.scalameta" % "sbt-scalafmt" % Versions.sbtScalafmt
   val sbtScalafix = "ch.epfl.scala" % "sbt-scalafix" % Versions.sbtScalafix
-  val sbtTpolecat = "io.github.davidgregory084" % "sbt-tpolecat" % Versions.sbtTpolecat
+  val sbtTpolecat = "org.typelevel" % "sbt-tpolecat" % Versions.sbtTpolecat
   val sbtVersionPolicy = "ch.epfl.scala" % "sbt-version-policy" % Versions.sbtVersionPolicy
   val scaluzzi = "com.github.vovapolu" %% "scaluzzi" % Versions.scaluzzi
   val silencer = "com.github.ghik" % "silencer-plugin" % Versions.silencer cross CrossVersion.full
