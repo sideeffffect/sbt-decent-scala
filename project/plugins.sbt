@@ -7,7 +7,7 @@ val Dependencies = new {
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.0"
     val sbtScalafix = "0.10.4"
-    val sbtTpolecat = "0.5.0"
+    val sbtTpolecat = "0.4.4"
     val sbtVersionPolicy = "2.1.2"
   }
   val missinglink = "com.spotify" % "missinglink-core" % Versions.missinglink
@@ -17,7 +17,7 @@ val Dependencies = new {
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
   val sbtScalafmt = "org.scalameta" % "sbt-scalafmt" % Versions.sbtScalafmt
   val sbtScalafix = "ch.epfl.scala" % "sbt-scalafix" % Versions.sbtScalafix
-  val sbtTpolecat = "org.typelevel" % "sbt-tpolecat" % Versions.sbtTpolecat
+  val sbtTpolecat = "io.github.davidgregory084" % "sbt-tpolecat" % Versions.sbtTpolecat
   val sbtVersionPolicy = "ch.epfl.scala" % "sbt-version-policy" % Versions.sbtVersionPolicy
 }
 
