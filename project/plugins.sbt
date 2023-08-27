@@ -1,14 +1,14 @@
 val Dependencies = new {
   val Versions = new {
-    val missinglink = "0.2.7"
+    val missinglink = "0.2.9"
     val sbtBuildinfo = "0.11.0"
     val sbtCiRelease = "1.5.12"
-    val sbtMissinglink = "0.3.5"
+    val sbtMissinglink = "0.3.6"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.0"
     val sbtScalafix = "0.10.4"
-    val sbtTpolecat = "0.4.2"
-    val sbtVersionPolicy = "2.1.0"
+    val sbtTpolecat = "0.4.4"
+    val sbtVersionPolicy = "2.1.3"
   }
   val missinglink = "com.spotify" % "missinglink-core" % Versions.missinglink
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo

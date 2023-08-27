@@ -6,19 +6,19 @@ object Dependencies {
 
     val betterMonadicFor = "0.3.1"
     val kindProjector = "0.13.2"
-    val missinglink = "0.2.7"
+    val missinglink = "0.2.9"
     val organizeImports = "0.6.0"
     val sbtBuildinfo = "0.11.0"
     val sbtDynver = "4.1.1"
-    val sbtMissinglink = "0.3.5"
+    val sbtMissinglink = "0.3.6"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.0"
     val sbtScalafix = "0.10.4"
-    val sbtTpolecat = "0.4.2"
-    val sbtVersionPolicy = "2.1.0"
+    val sbtTpolecat = "0.4.4"
+    val sbtVersionPolicy = "2.1.3"
     val scaluzzi = "0.1.23"
-    val silencer = "1.7.12"
-    val zerowaste = "0.2.6"
+    val silencer = "1.17.13"
+    val zerowaste = "0.2.12"
 
   }
 
