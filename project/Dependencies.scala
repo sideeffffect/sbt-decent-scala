@@ -9,16 +9,16 @@ object Dependencies {
     val missinglink = "0.2.9"
     val organizeImports = "0.6.0"
     val sbtBuildinfo = "0.11.0"
-    val sbtDynver = "4.1.1"
-    val sbtMissinglink = "0.3.5"
+    val sbtDynver = "5.0.1"
+    val sbtMissinglink = "0.3.6"
     val sbtRewarn = "0.1.3"
-    val sbtScalafmt = "2.5.0"
-    val sbtScalafix = "0.10.4"
+    val sbtScalafmt = "2.5.2"
+    val sbtScalafix = "0.11.1"
     val sbtTpolecat = "0.4.4"
     val sbtVersionPolicy = "2.1.3"
     val scaluzzi = "0.1.23"
     val silencer = "1.17.13"
-    val zerowaste = "0.2.11"
+    val zerowaste = "0.2.13"
 
   }
 
@@ -27,7 +27,7 @@ object Dependencies {
   val missinglink = "com.spotify" % "missinglink-core" % Versions.missinglink
   val organizeImports = "com.github.liancheng" %% "organize-imports" % Versions.organizeImports
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
-  val sbtDynver = "com.dwijnand" % "sbt-dynver" % Versions.sbtDynver
+  val sbtDynver = "com.github.sbt" % "sbt-dynver" % Versions.sbtDynver
   val sbtMissinglink = "ch.epfl.scala" % "sbt-missinglink" % Versions.sbtMissinglink
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
   val sbtScalafmt = "org.scalameta" % "sbt-scalafmt" % Versions.sbtScalafmt

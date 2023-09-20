@@ -3,18 +3,18 @@ on:
   pull_request:
 jobs:
   ciJvms:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
         java: [ '8', '11', '17' ]
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4.0.0
         with:
           fetch-depth: 100
       - name: Fetch tags
         run: git fetch --depth=100 origin +refs/tags/*:refs/tags/*
-      - uses: actions/setup-java@v3.12.0
+      - uses: actions/setup-java@v3.13.0
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java }}
@@ -24,7 +24,7 @@ jobs:
         run: ./sbt ci
 
   ci:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: [ ciJvms ]
     steps:
       - name: Aggregate of lint, and all tests
