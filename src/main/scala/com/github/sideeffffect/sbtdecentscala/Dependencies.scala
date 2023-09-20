@@ -11,7 +11,7 @@ object Dependencies {
     val organizeImports: String = "0.6.0"
     val scaluzzi: String = "0.1.23"
     val silencer: String = "1.17.13"
-    val zerowaste = "0.2.13"
+    val zerowaste = "0.2.14"
 
   }
 
