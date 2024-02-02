@@ -2,10 +2,10 @@ package com.github.sideeffffect.sbtdecentscala
 
 import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import com.timushev.sbt.rewarn.RewarnPlugin
-import io.github.davidgregory084.TpolecatPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
-import sbt.Keys.*
+import org.typelevel.sbt.tpolecat.TpolecatPlugin
 import sbt.*
+import sbt.Keys.*
 import sbtbuildinfo.BuildInfoKey
 import sbtbuildinfo.BuildInfoKeys.*
 import sbtdynver.DynVerPlugin
