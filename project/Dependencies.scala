@@ -16,7 +16,6 @@ object Dependencies {
     val sbtTpolecat = "0.5.0"
     val sbtVersionPolicy = "3.2.0"
     val scaluzzi = "0.1.23"
-    val silencer = "1.17.13"
     val zerowaste = "0.2.15"
 
   }
@@ -33,8 +32,6 @@ object Dependencies {
   val sbtTpolecat = "org.typelevel" % "sbt-tpolecat" % Versions.sbtTpolecat
   val sbtVersionPolicy = "ch.epfl.scala" % "sbt-version-policy" % Versions.sbtVersionPolicy
   val scaluzzi = "com.github.vovapolu" %% "scaluzzi" % Versions.scaluzzi
-  val silencer = "com.github.ghik" % "silencer-plugin" % Versions.silencer cross CrossVersion.full
-  val silencerLib = "com.github.ghik" % "silencer-lib" % Versions.silencer % Provided cross CrossVersion.full
   val zerowaste = "com.github.ghik" % "zerowaste" % Versions.zerowaste cross CrossVersion.full
 
 }

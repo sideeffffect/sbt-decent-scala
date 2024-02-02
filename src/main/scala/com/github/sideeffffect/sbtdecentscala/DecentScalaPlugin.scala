@@ -39,7 +39,6 @@ object DecentScalaPlugin extends AutoPlugin {
           decentScalaVersion3,
           decentScalaVersion213,
           decentScalaVersion212,
-          decentScalaVersion211,
         ),
         libraryDependencies ++= {
           CrossVersion.partialVersion(scalaVersion.value) match {
@@ -47,21 +46,15 @@ object DecentScalaPlugin extends AutoPlugin {
               List(
                 compilerPlugin(Dependencies.betterMonadicFor),
                 compilerPlugin(Dependencies.kindProjector),
-                compilerPlugin(Dependencies.silencer),
-                Dependencies.silencerLib,
               )
             case Some((2, _)) =>
               List(
                 compilerPlugin(Dependencies.betterMonadicFor),
                 compilerPlugin(Dependencies.kindProjector),
-                compilerPlugin(Dependencies.silencer),
                 compilerPlugin(Dependencies.zerowaste),
-                Dependencies.silencerLib,
               )
             case _ =>
-              List(
-                "com.github.ghik" % s"silencer-lib_$decentScalaVersion213" % Dependencies.Versions.silencer % Provided,
-              )
+              List()
           }
         },
         semanticdbEnabled := {
@@ -76,16 +69,6 @@ object DecentScalaPlugin extends AutoPlugin {
         ThisBuild / scalafixDependencies ++= List(
           Dependencies.scaluzzi,
         ),
-        scalacOptions ++= {
-          CrossVersion.partialVersion(scalaVersion.value) match {
-            case Some((2, _)) =>
-              List(
-                "-P:silencer:checkUnused",
-              )
-            case _ =>
-              List()
-          }
-        },
         scalacOptions ++= {
           CrossVersion.partialVersion(scalaVersion.value) match {
             case Some((2, 12)) | Some((2, 13)) =>

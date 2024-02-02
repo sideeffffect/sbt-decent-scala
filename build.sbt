@@ -2,7 +2,7 @@ import sbt.Defaults.sbtPluginExtra
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.12.17" // scala-steward:off
+ThisBuild / scalaVersion := "2.12.18" // scala-steward:off
 
 lazy val sbtDecentScala = project
   .in(file("."))
@@ -25,10 +25,8 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   libraryDependencies ++= List(
     compilerPlugin(Dependencies.betterMonadicFor),
     compilerPlugin(Dependencies.kindProjector),
-    compilerPlugin(Dependencies.silencer),
     compilerPlugin(Dependencies.zerowaste),
     Dependencies.missinglink,
-    Dependencies.silencerLib,
   ),
   semanticdbEnabled := true, // enable SemanticDB
   semanticdbOptions += "-P:semanticdb:synthetics:on",
@@ -38,7 +36,6 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     Dependencies.scaluzzi,
   ),
   scalacOptions ++= List(
-    "-P:silencer:checkUnused",
     "-Ywarn-macros:after",
     "-Xsource:3",
   ),
