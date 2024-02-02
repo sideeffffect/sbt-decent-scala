@@ -35,7 +35,6 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
   ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
   ThisBuild / scalafixDependencies ++= List(
-    Dependencies.organizeImports,
     Dependencies.scaluzzi,
   ),
   scalacOptions ++= List(
@@ -132,9 +131,9 @@ addCommandAlias(
 
 addCommandAlias(
   "lint",
-  "; scalafmtSbtCheck; scalafmtCheckAll; Compile/scalafix --check; Test/scalafix --check",
+  "; scalafmtSbtCheck; scalafmtCheckAll; scalafixAll --check",
 )
 addCommandAlias(
   "fix",
-  "; Compile/scalafix; Test/scalafix; scalafmtSbt; scalafmtAll",
+  "; scalafixAll; scalafmtSbt; scalafmtAll",
 )

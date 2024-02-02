@@ -28,9 +28,9 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
-    def decentScalaVersion3 = "3.2.1"
-    def decentScalaVersion213 = "2.13.10"
-    def decentScalaVersion212 = "2.12.17" // scala-steward:off
+    def decentScalaVersion3 = "3.3.1"
+    def decentScalaVersion213 = "2.13.12"
+    def decentScalaVersion212 = "2.12.18" // scala-steward:off
     def decentScalaVersion211 = "2.11.12"
     def decentScalaSettings: List[Def.Setting[_]] =
       List(
@@ -74,7 +74,6 @@ object DecentScalaPlugin extends AutoPlugin {
         semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
         ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
         ThisBuild / scalafixDependencies ++= List(
-          Dependencies.organizeImports,
           Dependencies.scaluzzi,
         ),
         scalacOptions ++= {
@@ -126,8 +125,8 @@ object DecentScalaPlugin extends AutoPlugin {
         addCommandAlias("check", "; lint; +missinglinkCheck; +versionPolicyCheck; +test") ++
         addCommandAlias(
           "lint",
-          "; scalafmtSbtCheck; scalafmtCheckAll; Compile/scalafix --check; Test/scalafix --check",
+          "; scalafmtSbtCheck; scalafmtCheckAll; scalafixAll --check",
         ) ++
-        addCommandAlias("fix", "; Compile/scalafix; Test/scalafix; scalafmtSbt; scalafmtAll")
+        addCommandAlias("fix", "; scalafixAll; scalafmtSbt; scalafmtAll")
   }
 }
