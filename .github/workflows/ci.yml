@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ '8', '11', '17' ]
+        java: [ '8', '11', '17', '21' ]
     steps:
       - uses: actions/checkout@v4.1.1
         with:
@@ -29,3 +29,27 @@ jobs:
     steps:
       - name: Aggregate of lint, and all tests
         run: echo "ci passed"
+
+  tag-on-merge:
+    name: Tag On Merge
+    runs-on: [self-hosted, cp-default]
+    timeout-minutes: 30
+    needs: [ci]
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.RELEASE_PAT }}
+          default_bump: patch
+          fetch_all_tags: true
+          tag_prefix: "v"
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+          token: ${{ secrets.RELEASE_PAT }}
+          generateReleaseNotes: true
