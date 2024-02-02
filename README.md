@@ -11,7 +11,6 @@ sbt plugin for decent Scala
 addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.7.0+50-0e483bdd")
 ```
 
-
 [Link-GitHubActions]: https://github.com/sideeffffect/sbt-decent-scala/actions?query=workflow%3ARelease+branch%3Amaster "GitHub Actions link"
 [Badge-GitHubActions]: https://github.com/sideeffffect/sbt-decent-scala/workflows/Release/badge.svg?branch=master "GitHub Actions badge"
 
