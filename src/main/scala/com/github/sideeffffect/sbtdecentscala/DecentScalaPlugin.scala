@@ -4,15 +4,15 @@ import ch.epfl.scala.sbtmissinglink.MissingLinkPlugin
 import com.timushev.sbt.rewarn.RewarnPlugin
 import org.scalafmt.sbt.ScalafmtPlugin
 import org.typelevel.sbt.tpolecat.TpolecatPlugin
-import sbt.Keys.*
-import sbt.*
+import sbt.Keys._
+import sbt._
 import sbtbuildinfo.BuildInfoKey
-import sbtbuildinfo.BuildInfoKeys.*
+import sbtbuildinfo.BuildInfoKeys._
 import sbtdynver.DynVerPlugin
 import sbtversionpolicy.SbtVersionPolicyPlugin
-import sbtversionpolicy.SbtVersionPolicyPlugin.autoImport.*
+import sbtversionpolicy.SbtVersionPolicyPlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin
-import scalafix.sbt.ScalafixPlugin.autoImport.*
+import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object DecentScalaPlugin extends AutoPlugin {
 

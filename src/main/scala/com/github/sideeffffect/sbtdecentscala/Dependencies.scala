@@ -1,6 +1,6 @@
 package com.github.sideeffffect.sbtdecentscala
 
-import sbt.*
+import sbt._
 
 object Dependencies {
 
