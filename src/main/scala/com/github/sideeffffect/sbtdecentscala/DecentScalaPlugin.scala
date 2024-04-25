@@ -105,7 +105,7 @@ object DecentScalaPlugin extends AutoPlugin {
         ThisBuild / versionPolicyIntention := Compatibility.BinaryCompatible,
         ThisBuild / versionPolicyIgnoredInternalDependencyVersions := Some("^\\d+\\.\\d+\\.\\d+\\+\\d+".r),
       ) ++
-        addCommandAlias("check", "; lint; +missinglinkCheck; +versionPolicyCheck; +test") ++
+        addCommandAlias("check", "; lint; +test; +missinglinkCheck; +versionPolicyCheck") ++
         addCommandAlias(
           "lint",
           "; scalafmtSbtCheck; scalafmtCheckAll; scalafixAll --check",
