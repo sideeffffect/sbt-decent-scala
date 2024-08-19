@@ -13,7 +13,7 @@ object Dependencies {
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.2"
     val sbtScalafix = "0.12.0"
-    val sbtTpolecat = "0.5.1"
+    val sbtTpolecat = "0.5.2"
     val sbtVersionPolicy = "3.2.1"
     val scaluzzi = "0.1.23"
     val zerowaste = "0.2.21"
