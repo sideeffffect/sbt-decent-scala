@@ -18,8 +18,8 @@ jobs:
         distribution: 'temurin'
         java-version: '8'
         cache: 'sbt'
-    - name: sbt ci-release-cont ${{ github.ref }}
-      run: ./sbt ci-release-cont
+    - name: sbt ci-release ${{ github.ref }}
+      run: ./sbt ci-release
       env:
         PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
         PGP_SECRET: ${{ secrets.PGP_SECRET }}
