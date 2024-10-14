@@ -31,7 +31,6 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   semanticdbEnabled := true, // enable SemanticDB
   semanticdbOptions += "-P:semanticdb:synthetics:on",
   semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
-  ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
   ThisBuild / scalafixDependencies ++= List(
     Dependencies.scaluzzi,
   ),
@@ -66,6 +65,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
     ),
     moduleFilter(organization = "com.squareup.okhttp3", name = "okhttp"),
     moduleFilter(organization = "com.timushev.sbt", name = "sbt-rewarn"),
+    moduleFilter(organization = "net.openhft", name = "zero-allocation-hashing"),
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-core"),
     moduleFilter(organization = "org.apache.logging.log4j", name = "log4j-slf4j-impl"),
   ),

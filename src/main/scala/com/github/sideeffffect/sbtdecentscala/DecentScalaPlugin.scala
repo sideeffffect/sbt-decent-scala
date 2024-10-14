@@ -65,7 +65,6 @@ object DecentScalaPlugin extends AutoPlugin {
         },
         semanticdbOptions += "-P:semanticdb:synthetics:on",
         semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
-        ThisBuild / scalafixScalaBinaryVersion := CrossVersion.binaryScalaVersion(scalaVersion.value),
         ThisBuild / scalafixDependencies ++= List(
           Dependencies.scaluzzi,
         ),
