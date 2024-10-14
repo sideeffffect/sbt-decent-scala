@@ -2,7 +2,7 @@ import sbt.Defaults.sbtPluginExtra
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.12.18" // scala-steward:off
+ThisBuild / scalaVersion := "2.12.19" // scala-steward:off
 
 lazy val sbtDecentScala = project
   .in(file("."))
