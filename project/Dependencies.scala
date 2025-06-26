@@ -8,15 +8,15 @@ object Dependencies {
     val kindProjector = "0.13.3"
     val missinglink = "0.2.11"
     val sbtBuildinfo = "0.13.1"
-    val sbtDynver = "5.1.0"
+    val sbtDynver = "5.1.1"
     val sbtMissinglink = "0.3.6"
     val sbtRewarn = "0.1.3"
-    val sbtScalafmt = "2.5.2"
-    val sbtScalafix = "0.13.0"
+    val sbtScalafmt = "2.5.4"
+    val sbtScalafix = "0.14.3"
     val sbtTpolecat = "0.5.2"
     val sbtVersionPolicy = "3.2.1"
     val scaluzzi = "0.1.23"
-    val zerowaste = "0.2.26"
+    val zerowaste = "0.2.29"
 
   }
 
