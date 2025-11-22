@@ -1,5 +1,6 @@
 # sbt-decent-scala
 
+
 | CI | Release |
 | --- | --- |
 | [![Build Status][Badge-GitHubActions]][Link-GitHubActions] | [![Release Artifacts][Badge-SonatypeReleases]][Link-SonatypeReleases] |
