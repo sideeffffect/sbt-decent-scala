@@ -7,9 +7,9 @@ object Dependencies {
   object Versions {
 
     val betterMonadicFor: String = "0.3.1"
-    val kindProjector: String = "0.13.3"
+    val kindProjector: String = "0.13.4"
     val scaluzzi: String = "0.1.23"
-    val zerowaste = "0.2.29"
+    val zerowaste = "1.0.0"
 
   }
 
