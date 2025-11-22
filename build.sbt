@@ -91,7 +91,7 @@ lazy val ciReleaseCont = {
       val reloadKeyFiles =
         "; set pgpSecretRing := pgpSecretRing.value; set pgpPublicRing := pgpPublicRing.value"
       if (!CiReleasePlugin.isTag && !git.gitCurrentBranch.value.contains("master")) {
-        if (CiReleasePlugin.isSnapshotVersion(currentState)) {
+        if (CiReleasePlugin.isSnapshotVersion(version.value)) {
           println(s"No tag push, publishing SNAPSHOT")
           reloadKeyFiles ::
             sys.env.getOrElse("CI_SNAPSHOT_RELEASE", "+publish") ::
