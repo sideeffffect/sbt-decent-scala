@@ -8,7 +8,7 @@ sbt plugin for decent Scala
 
 ```scala
 // project/plugins.sbt
-addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "1.0.94-1-4a0ad91d")
+addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "1.1.3")
 ```
 
 [Link-GitHubActions]: https://github.com/sideeffffect/sbt-decent-scala/actions?query=workflow%3ARelease+branch%3Amaster "GitHub Actions link"
