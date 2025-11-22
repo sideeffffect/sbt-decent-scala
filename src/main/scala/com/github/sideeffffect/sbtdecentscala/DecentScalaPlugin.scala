@@ -28,8 +28,8 @@ object DecentScalaPlugin extends AutoPlugin {
   }
 
   trait DecentScala {
-    def decentScalaVersion3 = "3.3.6"
-    def decentScalaVersion213 = "2.13.16"
+    def decentScalaVersion3 = "3.3.7"
+    def decentScalaVersion213 = "2.13.17"
     def decentScalaVersion212 = "2.12.20" // scala-steward:off
     def decentScalaVersion211 = "2.11.12"
     def decentScalaSettings: List[Def.Setting[_]] =
