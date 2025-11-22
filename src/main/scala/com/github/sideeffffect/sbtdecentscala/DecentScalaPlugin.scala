@@ -54,7 +54,9 @@ object DecentScalaPlugin extends AutoPlugin {
                 compilerPlugin(Dependencies.zerowaste),
               )
             case _ =>
-              List()
+              List(
+                compilerPlugin(Dependencies.zerowaste),
+              )
           }
         },
         semanticdbEnabled := {
