@@ -73,55 +73,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   mimaBinaryIssueFilters ++= List(
   ),
   ThisBuild / versionPolicyIntention := Compatibility.None,
-  ciReleaseCont,
 )
-
-lazy val ciReleaseCont = {
-  commands += Command.command("ci-release-cont") { currentState =>
-    val version = CiReleasePlugin.getVersion(currentState)
-    val isSnapshot = CiReleasePlugin.isSnapshotVersion(version)
-    if (!CiReleasePlugin.isSecure) {
-      println("No access to secret variables, doing nothing")
-      currentState
-    } else {
-      println(
-        s"Running ci-release-cont.\n" +
-          s"  branch=${CiReleasePlugin.currentBranch}",
-      )
-      CiReleasePlugin.setupGpg()
-      // https://github.com/olafurpg/sbt-ci-release/issues/64
-      val reloadKeyFiles =
-        "; set pgpSecretRing := pgpSecretRing.value; set pgpPublicRing := pgpPublicRing.value"
-
-      val publishCommand = CiReleasePlugin.getPublishCommand(currentState)
-
-      if (!CiReleasePlugin.isTag && !git.gitCurrentBranch.value.contains("master")) {
-        if (isSnapshot) {
-          println(s"No tag push, publishing SNAPSHOT")
-          reloadKeyFiles ::
-            sys.env.getOrElse("CI_CLEAN", "; clean") ::
-            // workaround for *.asc.sha1 not being allowed
-            sys.env.getOrElse("CI_SNAPSHOT_RELEASE", "+publish") ::
-            currentState
-        } else {
-          // Happens when a tag is pushed right after merge causing the main branch
-          // job to pick up a non-SNAPSHOT version even if TRAVIS_TAG=false.
-          println(
-            "Snapshot releases must have -SNAPSHOT version number, doing nothing",
-          )
-          currentState
-        }
-      } else {
-        println("Tag push detected, publishing a stable release")
-        reloadKeyFiles ::
-          sys.env.getOrElse("CI_CLEAN", "; clean") ::
-          publishCommand ::
-          sys.env.getOrElse("CI_SONATYPE_RELEASE", "sonaRelease") ::
-          currentState
-      }
-    }
-  }
-}
 
 addCommandAlias(
   "ci",
