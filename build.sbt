@@ -85,7 +85,7 @@ lazy val ciReleaseCont = {
       currentState
     } else {
       println(
-        s"Running ci-release.\n" +
+        s"Running ci-release-cont.\n" +
           s"  branch=${CiReleasePlugin.currentBranch}",
       )
       CiReleasePlugin.setupGpg()
