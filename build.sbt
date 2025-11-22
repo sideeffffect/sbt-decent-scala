@@ -59,6 +59,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
   ),
   version ~= (_.replace('+', '-')),
   missinglinkExcludedDependencies ++= List(
+    moduleFilter(organization = "com.eed3si9n", name = "shaded-apache-httpclient5"),
     moduleFilter( // fails on Java 8: `Problem: Method not found: java.nio.LongBuffer.position(int)`
       organization = "com.googlecode.javaewah",
       name = "JavaEWAH",
