@@ -3,6 +3,7 @@ val Dependencies = new {
     val missinglink = "0.2.11"
     val sbtBuildinfo = "0.13.1"
     val sbtCiRelease = "1.11.2"
+    val sbtGitHubActionsLogger = "1.1.0"
     val sbtMissinglink = "0.3.8"
     val sbtRewarn = "0.1.3"
     val sbtScalafmt = "2.5.6"
@@ -13,6 +14,8 @@ val Dependencies = new {
   val missinglink = "com.spotify" % "missinglink-core" % Versions.missinglink
   val sbtBuildinfo = "com.eed3si9n" % "sbt-buildinfo" % Versions.sbtBuildinfo
   val sbtCiRelease = "com.github.sbt" % "sbt-ci-release" % Versions.sbtCiRelease
+  val sbtGitHubActionsLogger =
+    "com.github.sideeffffect" % "sbt-github-actions-logger" % Versions.sbtGitHubActionsLogger
   val sbtMissinglink = "ch.epfl.scala" % "sbt-missinglink" % Versions.sbtMissinglink
   val sbtRewarn = "com.timushev.sbt" % "sbt-rewarn" % Versions.sbtRewarn
   val sbtScalafmt = "org.scalameta" % "sbt-scalafmt" % Versions.sbtScalafmt
@@ -23,6 +26,7 @@ val Dependencies = new {
 
 addSbtPlugin(Dependencies.sbtBuildinfo)
 addSbtPlugin(Dependencies.sbtCiRelease)
+addSbtPlugin(Dependencies.sbtGitHubActionsLogger)
 addSbtPlugin(Dependencies.sbtMissinglink)
 addSbtPlugin(Dependencies.sbtRewarn)
 addSbtPlugin(Dependencies.sbtScalafmt)
