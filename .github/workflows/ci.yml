@@ -5,7 +5,7 @@ on:
   pull_request:
 jobs:
   ciJvms:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     strategy:
       fail-fast: false
       matrix:
@@ -26,7 +26,7 @@ jobs:
 
   ci:
     if: always()
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: [ ciJvms ]
     steps:
       - uses: re-actors/alls-green@release/v1
@@ -35,7 +35,7 @@ jobs:
 
   tag-on-merge:
     name: Tag On Merge
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     needs: [ ci ]
     if: github.event_name != 'pull_request'
