@@ -1,7 +1,7 @@
 val Dependencies = new {
   val Versions = new {
     val missinglink = "0.2.11"
-    val sbtBuildinfo = "0.13.2"
+    val sbtBuildinfo = "0.14.0"
     val sbtCiRelease = "1.11.2"
     val sbtGitHubActionsLogger = "1.1.0"
     val sbtMissinglink = "0.3.8"
